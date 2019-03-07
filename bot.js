@@ -1,5 +1,11 @@
+/*
+This code is kind of poorly written and doesn't utilise modern JavaScript async practices (uses setTimeout instead of promises or async/await)
+Doesn't do everything, but it's a good place to start.
+Some of the logic could be written better
+*/
+
 const TelegramBot = require('node-telegram-bot-api');
-const token = '';
+const token = ''; // <-- Telegram Bot token
 
 var chat_id = "";
 
@@ -8,8 +14,9 @@ var userNames = [];
 var currentMode = "waiting";
 
 const bot = new TelegramBot(token, { polling: true });
+
 //VARS------------
-var sheduledHours = [15, 18, 21];
+var scheduledHours = [15, 18, 21];
 var notifyGroupRulesTime = [10, 13, 17];
 
 var groupRulesText = "group rules";
@@ -44,12 +51,12 @@ setInterval(function () {
         sendToGroup(groupRulesText);
     }
 
-    if (currentMode == "waiting" && sheduledHours.includes(current_hour + 1) && ((current_min == 0 ? 60 : current_min) - announceTime == 40)) {//announce
+    if (currentMode == "waiting" && scheduledHours.includes(current_hour + 1) && ((current_min == 0 ? 60 : current_min) - announceTime == 40)) {//announce
         sendToGroup(announceText);
         currentMode = "annotate";
     }
 
-    else if (currentMode == "annotate" && sheduledHours.includes(current_hour) && current_min == 0) {//started collecting
+    else if (currentMode == "annotate" && scheduledHours.includes(current_hour) && current_min == 0) {//started collecting
         collecting_start_time = time_now;
         setTimeout(function () {
             sendToGroup(startCollectingTextWithTimeLeft);
@@ -97,15 +104,15 @@ bot.on('message', (msg) => {
     }
 })
 
-var getMinutesFromMileseconds = function (t) {
+var getMinutesFromMilliseconds = function (t) {
     if (!t) return 0;
     return Math.floor(t / 60000);
 }
 
 var getMinutesDiff = function (d1, d2) {
     if (!d1 || !d2) return 0;
-    var mileseconds = Math.abs(d1 - d2);
-    var res = getMinutesFromMileseconds(mileseconds);
+    var milliseconds = Math.abs(d1 - d2);
+    var res = getMinutesFromMilliseconds(milliseconds);
     return res;
 }
 var getListMessage = function () {
