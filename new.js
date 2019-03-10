@@ -8,15 +8,15 @@ const token = ''; // <-- Unique Telegram Bot token
 const chat_id = "";
 const bot = new TelegramBot(token, { polling: true });
 
-moment.tz.setDefault("Pacific Standard Time"); // Set PST as default
+moment.tz.setDefault("America/Tijuana"); // Set PST as default
 
 let accounts = [];
 let firstroundTimes = [
-	moment(13, "HH"),
-	moment(15, "HH"), // needs minutes
-	moment(18, "HH"),
-	moment(20, "HH"), // needs minutes
-	moment(23, "HH"),
+	moment({hour: 13}),
+	moment({hour: 15, minute: 30}), // needs minutes
+	moment({hour: 18}),
+	moment({hour: 20, minute: 30}), // needs minutes
+	moment({hour: 23}),
 ];
 
 function setRounds (times) {  // sets round times
