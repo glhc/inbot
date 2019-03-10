@@ -3,60 +3,83 @@
 ## Telegram Channel
 
 - Announce rules upon user join
-- 
-
+- The round should be 6 times a day starting at 1 PM PST, 3.30 PM EST, 6 PM EST, 8.30 PM EST, 11 PM EST
 
 
 ### Round Structure
 
-#### T-30 Minutes: Alert
-- "Next round starts in 30 minutes, please get ready to submit your account name. Do not post your username until I've said to or else you'll miss the round"
+#### T-45 Minutes: Alert
+- "Next round starts in 45 minutes, please get ready to submit your account name. Do not post your username until I've said to or else you'll miss the round"
 - Subsequent messages advertising the round
 
-#### Round Start: Drop Accounts
-- "The round starts now! Drop Accounts! etc!"
+#### T-30 Minutes: Drop Accounts
+- 30 minutes before the round begins  “Comment your Instagram @accountname now to get added to the next engagement round”
+
+#### T-10 Minutes
+- Put out a post 10 minutes before post time “10 minutes left to post your Instagram @accountname for inclusion in this engagement round”
+
+
+#### Round Start
+- “The round starts now! DM @starspullingmyhairbot to get the list of Instagram accounts and like on the most recent post for each account”
 - _Format_: @getLikes, @giveLikes
-- Must drop admin's latest post
+- Drop whitelist's latest 1 posts
+- Collect the list of every account name that has been submitted in the 30 minutes time window, and post:
+- “Please engage within 90 minutes and when you’ve finished, comment “@YourOwnInstagramAccount done”
+- Account names have to be posted in groups of 15, and our account, @starspullingmyhair, should be included first in every round regardless of it being commented whilst the round addition window was open.
 
+- After 40, 60, and 80 minutes the bot should post a compiled list of all the account names that haven’t finished engaging yet.
 
-#### T+60 Minutes: Liking Phase
+#### T+90 Minutes: Liking Phase
 - Compile a list and serve the list in differnt formats
+- Account names have to be posted in groups of 15, and our account, @starspullingmyhair, should be included first in every round regardless of it being commented whilst the round addition window was open.
+- Output "Please engage within 90 minutes and when you’ve finished, comment “@Instagramaccountname done"
 - List format should be user specific and dm'd to each user
 - User has to request or we can message directly (depends what the botapi allows)
 - Formats: FollowLiker list, IGDM list (instagram-specific, into instagram dm for easy liking)(note, there is an insta character limit on DM)
-- there is also link list, which will dm you into 
+- there is also link list, which will dm you into
+- If there is a list of accounts that didn’t complete a round, they should be (ideally) added to a google sheet or a text file. Less ideally, the list would be sent to my email address. 
 
 #### T+180 Minutes: Round Close & Verification
 - "Round is closed, will check if everyone that joined the round liked/commented."
 - Issue warnings/bans
-
+- After 90 minutes the bot needs to post a compiled list of all the account names that have entered the round but failed to engage in the time. These accounts need to be posted with “These accounts have entered the round but failed to engage. You each have a warning and may be asked to leave the group if this happens 5 times. Please complete the rounds you enter to be fair to everyone that does:
+“@accountthatdidn’tfinish1
+@accountthatdidn’tfinish2
+@accountthatdidn’tfinish3
+@accountthatdidn’tfinish4
+….”
+- If there is a list of accounts that didn’t complete a round, they should be (ideally) added to a google sheet or a text file. Less ideally, the list would be sent to my email address.
 * * *
 
 ### Interaction With the Bot
 
 ##### Admin (DM to bot)
-- _/start_ - gives list of commands
-- _/help_ - Recieve commands list
+- __/start__ - gives list of commands
+- __/help__ - Recieve commands list
+- __/remove_group_warns__ that is pretty easy to understand
+
 - need manual warn
 - add to whitelist
 - remove from whitelist
 
 ##### User
-- _/help_ - Recieve commands list
-- _/nextround_ - output time until next round
-- _/admin_ - Output the admin details
-- _/wp_ - Output the user's warning points
-// tabled for later discussion - _/check_ - check if your done liking every (desirable)
-- _/rules_ - show rules
-- _/leaveround_
-- _/swap_ - swap liking account (account which will be doing the likes)
+- __/help__ - Recieve commands list
+- __/time__ - to check time of all rounds
+- __/nextround__ - output time until next round
+- __/admin__ - Output the admin details
+- __/wp__ - Output the user's warning points
+- __/rules__ - show rules
+- __/leaveround__
+- __/swap__ - swap liking account (account which will be doing the likes)
 
-/*
+// tabled for later discussion - _/check_ - check if your done liking every (desirable)
+
+_
 90 minutes liking phase
 30 minute drop
 6 rounds per day
 30 minute gap between (rounds + leadup)(checking & warnings can be done here)
-
+_
 * * *
 
 ### Misc
