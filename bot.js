@@ -1,21 +1,22 @@
 /*
-This code is kind of poorly written and doesn't utilise modern JavaScript async practices (uses setTimeout instead of promises or async/await)
+The copied code is kind of poorly written and doesn't utilise modern JavaScript
+async practices (e.g. uses setTimeout instead of promises or async/await)
 Doesn't do everything, but it's a good place to start.
 Some of the logic could be written better
+Also, some bugs waiting to happen
 */
 
+// Requisites & initialization
+const moment - require("moment-timezone"); // library for timezone logic
 const TelegramBot = require('node-telegram-bot-api');
-const token = ''; // <-- Telegram Bot token
-
-var chat_id = "";
-
-var userNames = [];
-
-var currentMode = "waiting";
-
+const token = ''; // <-- Unique Telegram Bot token
+const chat_id = "";
 const bot = new TelegramBot(token, { polling: true });
 
-//VARS------------
+
+// Variables
+let userNames = [];
+let currentMode = "waiting";
 var scheduledHours = [15, 18, 21];
 var notifyGroupRulesTime = [10, 13, 17];
 
@@ -33,13 +34,14 @@ var tenMinsLeftText = "10 minutes left to comment your Instagram @accountname fo
 
 var likeTimeText = "The round starts now! Copy and paste the username lists into your Instagram Direct Messages, then click through each account and like and leave a 3+ word comment on the most recent post for each account";
 var likeEndText = "Round is closed, will check if everyone that joined the round liked/commented.";
-//END VARS------------
+
 
 var collecting_start_time;
 var like_start_time;
 
 var debug_iterator = 0;
 
+// Main
 setInterval(function () {
     var time_now = new Date();
     var current_hour = time_now.getHours();

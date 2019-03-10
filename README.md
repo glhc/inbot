@@ -3,8 +3,9 @@
 ## Telegram Channel
 
 - Announce rules upon user join
+- Total time per round takes 2.5 hours with a 15 minute overlap (T-45 to T-30 overlaps with previous rounds)
 - The round should be 6 times a day starting at 1 PM PST, 3.30 PM EST, 6 PM EST, 8.30 PM EST, 11 PM EST
-
+- Whitelist - accounts included in every round which must be liked
 
 ### Round Structure
 
@@ -56,11 +57,13 @@
 ##### Admin (DM to bot)
 - __/start__ - gives list of commands
 - __/help__ - Recieve commands list
-- __/remove_group_warns__ that is pretty easy to understand
-
-- need manual warn
-- add to whitelist
-- remove from whitelist
+- __/removeallwarns__ that is pretty easy to understand
+- __/warn__ - warn a user
+- __/removewarn__ - remove 1 warning from user
+- __/whitelistshow__ - show whitelist
+- __/whitelistadd__ - add an account to whitelist
+- __/whitelistremove__ - remove account from whitelist
+- __/changetimes__ - accepts list of times to run rounds (JSON format)
 
 ##### User
 - __/help__ - Recieve commands list
@@ -69,18 +72,9 @@
 - __/admin__ - Output the admin details
 - __/wp__ - Output the user's warning points
 - __/rules__ - show rules
-- __/leaveround__
+- __/leave__ - leave from round (if user has accidentally took part at the round and he/she has a willing to leave this round) 
 - __/swap__ - swap liking account (account which will be doing the likes)
 
-// tabled for later discussion - _/check_ - check if your done liking every (desirable)
-
-_
-90 minutes liking phase
-30 minute drop
-6 rounds per day
-30 minute gap between (rounds + leadup)(checking & warnings can be done here)
-_
 * * *
 
 ### Misc
-- Need whitelist - accounts which cannot be warned
