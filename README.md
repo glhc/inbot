@@ -40,7 +40,7 @@
 - there is also link list, which will dm you into
 - If there is a list of accounts that didn’t complete a round, they should be (ideally) added to a google sheet or a text file. Less ideally, the list would be sent to my email address. 
 
-#### T+180 Minutes: Round Close & Verification
+###### Round Close & Verification
 - "Round is closed, will check if everyone that joined the round liked/commented."
 - Issue warnings/bans
 - After 90 minutes the bot needs to post a compiled list of all the account names that have entered the round but failed to engage in the time. These accounts need to be posted with “These accounts have entered the round but failed to engage. You each have a warning and may be asked to leave the group if this happens 5 times. Please complete the rounds you enter to be fair to everyone that does:
