@@ -13,9 +13,9 @@ moment.tz.setDefault("America/Tijuana"); // Set PST as default
 let accounts = [];
 let roundTimes = [
 	moment({hour: 13}),
-	moment({hour: 15, minute: 30}), // needs minutes
+	moment({hour: 15, minute: 30}),
 	moment({hour: 18}),
-	moment({hour: 20, minute: 30}), // needs minutes
+	moment({hour: 20, minute: 30}),
 	moment({hour: 23}),
 ];
 
@@ -43,16 +43,16 @@ function roundStart() {
 };
 
 // Maybe tPlus40, tPlus60 & tPlus80 can be combined?
-function tPlus40() {
-
+function tPlus40(percentCompleted) {
+	bot.sendMessage("We're " + percentCompleted + "of the way there!");
 };
 
-function tPlus60() {
-
+function tPlus60(percentCompleted) {
+	bot.sendMessage("We're " + percentCompleted + "of the way there!");
 };
 
-function tPlus80() {
-
+function tPlus80(percentCompleted) {
+	bot.sendMessage("We're " + percentCompleted + "of the way there!");
 };
 
 // Define array of round start times in JSON format
@@ -60,6 +60,36 @@ JSON.parse(xxx) // <-- xxx filled with default vals, modified by user
 
 // Bot command section
 bot.onText(/\/help/, (msg, match) => {
+	// 'msg' is the received Message from Telegram
+  // 'match' is the result of executing the regexp above on the text content
+  // of the message
+}); 
+
+bot.onText(/\/rounds/, (msg, match) => {
+	// 'msg' is the received Message from Telegram
+  // 'match' is the result of executing the regexp above on the text content
+  // of the message
+}); 
+
+bot.onText(/\/nextround/, (msg, match) => {
+	// 'msg' is the received Message from Telegram
+  // 'match' is the result of executing the regexp above on the text content
+  // of the message
+}); 
+
+bot.onText(/\/admin/, (msg, match) => {
+	// 'msg' is the received Message from Telegram
+  // 'match' is the result of executing the regexp above on the text content
+  // of the message
+}); 
+
+bot.onText(/\/mywarns/, (msg, match) => {
+	// 'msg' is the received Message from Telegram
+  // 'match' is the result of executing the regexp above on the text content
+  // of the message
+});
+
+bot.onText(/\/leave/, (msg, match) => {
 	// 'msg' is the received Message from Telegram
   // 'match' is the result of executing the regexp above on the text content
   // of the message
