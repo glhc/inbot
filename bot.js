@@ -7,8 +7,13 @@ const TelegramBot = require('node-telegram-bot-api');
 const token = ''; // <-- Unique Telegram Bot token
 const chat_id = "";
 const bot = new TelegramBot(token, { polling: true });
+const commands = [
+	
+];
 
 moment.tz.setDefault("America/Tijuana"); // Set PST as default
+
+//store list of commands to send to BotFather
 
 let accounts = [];
 let roundTimes = [
@@ -59,6 +64,17 @@ function tPlus80(percentCompleted) {
 JSON.parse(xxx) // <-- xxx filled with default vals, modified by user
 
 // Bot command section
+bot.onText(/\/start/, (msg, match) => {
+	// 'msg' is the received Message from Telegram
+  // 'match' is the result of executing the regexp above on the text content
+  // of the message
+  bot.sendMessage("Hi there! please find below a list of commands:" +
+  		for (let i in commands) {
+  			"\n" + commands[i];
+  		};
+  	);
+}); 
+
 bot.onText(/\/help/, (msg, match) => {
 	// 'msg' is the received Message from Telegram
   // 'match' is the result of executing the regexp above on the text content
@@ -69,6 +85,10 @@ bot.onText(/\/rounds/, (msg, match) => {
 	// 'msg' is the received Message from Telegram
   // 'match' is the result of executing the regexp above on the text content
   // of the message
+  bot.sendMessage("(Pacific Time) The rounds begin at the following:" + 
+  	for (let i in roundTimes) {
+  		"\n" + i;
+  	});
 }); 
 
 bot.onText(/\/nextround/, (msg, match) => {
@@ -81,16 +101,31 @@ bot.onText(/\/admin/, (msg, match) => {
 	// 'msg' is the received Message from Telegram
   // 'match' is the result of executing the regexp above on the text content
   // of the message
+  bot.sendMessage("The admin is: " + admin
+  	);
 }); 
 
 bot.onText(/\/mywarns/, (msg, match) => {
 	// 'msg' is the received Message from Telegram
   // 'match' is the result of executing the regexp above on the text content
-  // of the message
+  // of the message });
+  let warns = 
+
+	bot.sendMessage("You have " + warns + "/5 warnings."
+
+	);
+
 });
 
 bot.onText(/\/leave/, (msg, match) => {
 	// 'msg' is the received Message from Telegram
   // 'match' is the result of executing the regexp above on the text content
   // of the message
+}); 
+
+bot.onText(/@/, (msg, match) => {
+	// 'msg' is the received Message from Telegram
+  // 'match' is the result of executing the regexp above on the text content
+  // of the message
+  accounts.push(msg);
 }); 
