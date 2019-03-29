@@ -7,7 +7,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const token = ''; // <-- Unique Telegram Bot token
 const chat_id = "";
 const bot = new TelegramBot(
-	"898277593:AAFPnz-jSVU7RpJFuftB0_n-2E3GuwsuPoc", // bot token from BotFather
+	"API_TOKEN_HERE", // bot token from BotFather
   { polling: true }
  );
 const admin = {
