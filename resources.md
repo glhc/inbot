@@ -15,3 +15,4 @@
 - https://stackoverflow.com/questions/25753368/performant-parsing-of-pages-with-node-js-and-xpath <-- if i need to write the web scraping in node.js
 - https://github.com/timgrossmann/instagram-profilecrawl
 - https://github.com/GoogleChrome/puppeteer
+- telegram message object: https://core.telegram.org/bots/api#message

@@ -6,10 +6,13 @@ const moment - require("moment-timezone"); // library for timezone logic
 const TelegramBot = require('node-telegram-bot-api');
 const token = ''; // <-- Unique Telegram Bot token
 const chat_id = "";
-const bot = new TelegramBot(token, { polling: true });
+const bot = new TelegramBot(
+	"898277593:AAFPnz-jSVU7RpJFuftB0_n-2E3GuwsuPoc", // bot token from BotFather
+  { polling: true }
+ );
 const admin = {
 	igAccount:"@starspullingmyhair",
-	tgUsername:"",
+	tgUsername:"@starspullingmyhair",
 	tgUserId:"",
 };
 
@@ -28,8 +31,8 @@ const commands = [  //store list of commands to send to BotFather
 
 moment.tz.setDefault("America/Tijuana"); // Set PST as default
 
-
-let accounts = [];
+let warnedList = new Object(); // Object to track warnings.
+let accounts = []; // array to hold usernames for a round. Might need object.
 let roundTimes = [
 	moment({hour: 13}),
 	moment({hour: 15, minute: 30}),
@@ -61,12 +64,23 @@ function roundStart() {
 		"each account.");
 };
 
+bot.onText(  // change start times
+
+);
+
 function changeStartTimes (newTimes) {
+
+bot.sendMessage("All times are in PST. Type \"\\done\" when finished setting " + 
+	"rounds.");
+// probably implement a loop which parses all replies for round times
+// if the reply matches "done", end round setting function.
+	bot.SendMessage("Please enter start time of round.");
 
 };
 
 // Maybe tPlus40, tPlus60 & tPlus80 can be combined?
 function tPlus40(percentCompleted) {
+	//chain 
 	bot.sendMessage("We're " + percentCompleted + "of the way there!");
 };
 
@@ -120,13 +134,14 @@ bot.onText(/\/admin/, (msg, match) => {
 	// 'msg' is the received Message from Telegram
   // 'match' is the result of executing the regexp above on the text content
   // of the message
-  bot.sendMessage("The admin is: " + admin
+  bot.sendMessage("The admin is: " + admin.tgUsername
   	);
 }); 
 
 // Command: Check own warnings
 bot.onText(/\/mywarns/, (msg, match) => {
-  let warns = 
+  let user = msg.from.id;
+  let warns = accounts.user.warnings; 
 
 	bot.sendMessage("You have " + warns + "/5 warnings."
 
@@ -136,27 +151,27 @@ bot.onText(/\/mywarns/, (msg, match) => {
 
 //Command: User leaves round
 bot.onText(/\/leave/, (msg, match) => {
-	// 'msg' is the received Message from Telegram
-  // 'match' is the result of executing the regexp above on the text content
-  // of the message
+	let pos = array.findIndex(msg.from.id);
+	array.splice(pos, 1); 
 }); 
 
 bot.onText(/@/, (msg, match) => {
-	// 'msg' is the received Message from Telegram
-  // 'match' is the result of executing the regexp above on the text content
-  // of the message
+	// need to write logic to parse one or two accounts from input
   accounts.push(msg);
 });
 
-// Command: Admin-only issue warning
+// Admin command: Warn a user
 bot.onText(/\/warn/, (msg, match) => {
+	// admin check
 	if (msg.from.id === admin.tgUserId) {
+		// get tgUsername string of the warned
 		let stringIndex = msg.text.indexOf(" ") + 1; // get index of string
-		let userWarned = msg.text.slice(msg.text[stringIndex]); // get tgusername
+		let warned = msg.text.slice(msg.text[stringIndex]); // get tgUsername
 
-		if (userWarned.userId < 5) {
-			user.warnings++;
-		} else {
+		// Warn or ban them
+		user.warnings++;
+		
+		if (warnedList.warned === 5) {
 			bot.kickChatMember(chat_id, user_id);
 	}};
 });
